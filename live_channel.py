@@ -99,11 +99,5 @@ def run_job():
     filtered = filter_lives(raw)
     save_to_json(filtered)
 
-def main():
-    schedule.every(3).hours.at("18:00").do(run_job)
-    while True:
-        schedule.run_pending()
-        time.sleep(1)
-
 if __name__ == "__main__":
-    main()
+    run_job()
