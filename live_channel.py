@@ -35,30 +35,30 @@ def fetch_all_lives():
             try:
                 data = res.json()
 
-                # ✅ 방송 목록 수집
+                #방송 목록 수집
                 content = data.get("content", {})
                 lives = content.get("data", [])
-                print(f"📦 수집된 방송 수: {len(lives)}개")
+                print(f"수집된 방송 수: {len(lives)}개")
                 all_lives.extend(lives)
 
-                # ✅ 다음 페이지 커서
+                #다음 페이지 커서
                 next_cursor = content.get("page", {}).get("next")
                 if not next_cursor:
-                    print("🚫 다음 페이지 없음")
+                    print("다음 페이지 없음")
                     break
 
             except ValueError as e:
-                print("❌ JSON 파싱 오류:", e)
+                print("JSON 파싱 오류:", e)
                 break
 
         else:
-            print(f"❌ 요청 실패: {res.status_code}")
+            print(f"요청 실패: {res.status_code}")
             break
 
         page_count += 1
         time.sleep(0.1)
 
-    print(f"\n✅ 최종 수집된 방송 수: {len(all_lives)}개")
+    print(f"\n최종 수집된 방송 수: {len(all_lives)}개")
     return all_lives
 
 def save_lives():
@@ -68,9 +68,9 @@ def save_lives():
         filename = f"live_channels_all_{now_str}.json"
         with open(filename, "w", encoding="utf-8") as f:
             json.dump(result, f, indent=2, ensure_ascii=False)
-        print(f"📁 저장 완료: {filename}")
+        print(f"저장 완료: {filename}")
     else:
-        print("⚠️ 저장할 방송 데이터가 없습니다.")
+        print("저장할 방송 데이터가 없습니다.")
 
 def filter_lives(data):
     return [
@@ -92,7 +92,7 @@ def save_to_json(data):
     filename = f"live_cleaned_{now_str}.json"
     with open(filename, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
-    print(f"📁 저장 완료: {filename}")
+    print(f"저장 완료: {filename}")
 
 def run_job():
     raw = fetch_all_lives()
