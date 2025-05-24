@@ -29,7 +29,7 @@ def fetch_all_lives():
             params["next"] = next_cursor
 
         res = requests.get(url, headers=headers, params=params)
-        print(f"\n📡 요청 {page_count + 1}페이지 | Status: {res.status_code}")
+        print(f"\n 요청 {page_count + 1}페이지 | Status: {res.status_code}")
 
         if res.status_code == 200:
             try:
