@@ -1,7 +1,7 @@
 import requests
 import json
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 from dotenv import load_dotenv
 import os
 
@@ -87,8 +87,9 @@ def filter_lives(data):
     ]
 
 def save_to_json(data):
-    now_str = datetime.now().strftime("%Y%m%d_%H%M")
-    filename = f"live_cleaned_{now_str}.json"
+    kst_time = datetime.now() + timedelta(hours=9)
+    now_str = kst_time.strftime("%Y%m%d_%H%M")
+    filename = f"/home/ubuntu/capstone_project/live_cleaned_{now_str}.json"
     with open(filename, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
     print(f"저장 완료: {filename}")
