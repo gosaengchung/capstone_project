@@ -20,6 +20,9 @@
 
 ## 네이버 개발자 센터로부터 치지직 API 활용 요청 후 API ID 및 key 저장  
 
+> https://developers.chzzk.naver.com/  
+
+
 
 
 ## 공식 API를 활용한 실시간 데이터 수집  
